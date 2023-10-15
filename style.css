@@ -2,6 +2,7 @@
 
 body {
 	font-family: 'Ysabeau', sans-serif;
+	overflow-x: hidden;
 }
 .container-fluid .navbar.fixed-top.navbar-expand-lg.navbar-light.bg-light {
     background-image: -webkit-linear-gradient(135deg,rgba(46,175,125,1.00) 0%,rgba(63,208,201,1.00) 100%);
@@ -23,27 +24,11 @@ body {
 	color: rgba(110,115,114,1.00);
 	transition: color 300ms ease;
 }
-.video {
-	text-align: center;
-	width: auto;
-	height: 400px;
-	background: rgba(0,0,0,0.77);
-}
 
-h2, h4 {
+
+h2, h3, h4 {
 	text-transform: uppercase;
 	font-family: 'Ysabeau', sans-serif;
-}
-
-.zoom {
-	margin: 20px;
-	width: 300px;
-	height: auto; 
-	transition: transform 0.5s ease; 
-}
-
-.zoom:hover {
-	transform: scale(1.2);
 }
 
 footer {
@@ -66,66 +51,43 @@ footer {
 	font-size: 0.7em;
 	padding-bottom: 5px;
 }
-.cUs{
-        position: relative;
-        text-align:center;
-        color:white;
+
+
+
+/* CSS for the home page */
+.video {
+	text-align: center;
+	width: auto;
+	height: 400px;
+	background: rgba(0,0,0,0.77);
 }
-.centered {
-        position: absolute;
-	top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size:90px;
+
+.zoom {
+	margin: 20px;
+	width: 300px;
+	height: auto; 
+	transition: transform 0.5s ease; 
 }
-.contact{
-	background:#65B6B4;
-	color:#000000;
-	position: relative;
-	border-radius: 20px;
-	padding: 20px;
-	height:920px;
-	width:800px;
+
+.zoom:hover {
+	transform: scale(1.2);
 }
-.input{
-	border-radius:20px;
-	padding: 10px 20px 10px 25px;
-	border: 1px solid #fff;
-	resize: none;
-}
-input:focus {
-        background-color: #D0E7D2;
-}
-textarea:focus {
-        background-color: #D0E7D2;
-}
-.button:active {
-	  background-color: #65B6B4;
-	  box-shadow: 0 5px #666;
-	  transform: translateY(3px);
-}
-input[type=submit]:hover {
- 	 background-color: #A2CDCD;
-}
-input[type=reset]:hover {
-	  background-color: #A2CDCD;
-}
-#submit{
-	width:450px;
-	height:40px;
-	box-shadow: 4px 4px;
-}
-#reset{
-	width:450px;
-	height:40px;
-	box-shadow: 4px 4px;
-}
+
+
+
+/*CSS for the About Us page*/
 .tcard{
  	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        width: 20%;
+    width: 20%;
 }
 .team{
-        padding:10px;
+    padding:10px;
+	transition: transform 0.5s ease;
+}
+.team:hover{
+  	-ms-transform: scale(1.1); /* IE 9 */
+ 	 -webkit-transform: scale(1.1); /* Safari 3-8 */
+ 	 transform: scale(1.1); 
 }
 td{
 	text-align: center;
@@ -144,11 +106,6 @@ td{
 	border-radius: 20px;
 	height: 650px;
 }
-.team:hover{
-  	-ms-transform: scale(1.1); /* IE 9 */
- 	 -webkit-transform: scale(1.1); /* Safari 3-8 */
- 	 transform: scale(1.1); 
-}
 .nsbm{
 	padding: 20px;
 }
@@ -166,6 +123,9 @@ td{
 	border-radius: 20px;
 	height: 890px;
 }
+.pic {
+	transition: opacity 0.5s ease;
+}
 .pic:hover{
 	opacity: 0.5;
 }
@@ -182,4 +142,62 @@ td{
 	padding: 20px;
 	height: 665px;
 	width:900px;
+}
+
+
+
+/*CSS for the Contact Us page*/
+.cUs{
+	position: relative;
+    text-align:center;
+    color:white;
+}
+.centered {
+    position: absolute;
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:90px;
+}
+.contact{
+	background:#65B6B4;
+	color:#000000;
+	position: relative;
+	border-radius: 20px;
+	padding: 20px;
+	height:920px;
+	width:800px;
+}
+.contact .input{
+	border-radius:20px;
+	padding: 10px 20px 10px 25px;
+	border: 1px solid #fff;
+	resize: none;
+}
+.contact input:focus {
+	background-color: #D0E7D2;
+}
+.contact textarea:focus {
+        background-color: #D0E7D2;
+}
+.contact .button:active {
+	  background-color: #65B6B4;
+	  box-shadow: 0 5px #666;
+	  transform: translateY(3px);
+}
+.contact input[type=submit]:hover {
+ 	 background-color: #A2CDCD;
+}
+.contact input[type=reset]:hover {
+	  background-color: #A2CDCD;
+}
+.contact #submit{
+	width:450px;
+	height:40px;
+	box-shadow: 4px 4px;
+}
+.contact #reset{
+	width:450px;
+	height:40px;
+	box-shadow: 4px 4px;
 }
