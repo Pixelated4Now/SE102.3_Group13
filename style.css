@@ -66,3 +66,120 @@ footer {
 	font-size: 0.7em;
 	padding-bottom: 5px;
 }
+.cUs{
+        position: relative;
+        text-align:center;
+        color:white;
+}
+.centered {
+        position: absolute;
+	top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size:90px;
+}
+.contact{
+	background:#65B6B4;
+	color:#000000;
+	position: relative;
+	border-radius: 20px;
+	padding: 20px;
+	height:920px;
+	width:800px;
+}
+.input{
+	border-radius:20px;
+	padding: 10px 20px 10px 25px;
+	border: 1px solid #fff;
+	resize: none;
+}
+input:focus {
+        background-color: #D0E7D2;
+}
+textarea:focus {
+        background-color: #D0E7D2;
+}
+.button:active {
+	  background-color: #65B6B4;
+	  box-shadow: 0 5px #666;
+	  transform: translateY(3px);
+}
+input[type=submit]:hover {
+ 	 background-color: #A2CDCD;
+}
+input[type=reset]:hover {
+	  background-color: #A2CDCD;
+}
+#submit{
+	width:450px;
+	height:40px;
+	box-shadow: 4px 4px;
+}
+#reset{
+	width:450px;
+	height:40px;
+	box-shadow: 4px 4px;
+}
+.tcard{
+ 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        width: 20%;
+}
+.team{
+        padding:10px;
+}
+td{
+	text-align: center;
+}
+.members{
+	background:#65B6B4;
+	color:#000000;
+	position: relative;
+	border-radius: 20px;
+	padding: 20px;
+	height: 700px;
+	width:900px;
+}
+.mem{
+	background: #FFFFFF;
+	border-radius: 20px;
+	height: 650px;
+}
+.team:hover{
+  	-ms-transform: scale(1.1); /* IE 9 */
+ 	 -webkit-transform: scale(1.1); /* Safari 3-8 */
+ 	 transform: scale(1.1); 
+}
+.nsbm{
+	padding: 20px;
+}
+.uni{
+	background:#65B6B4;
+	color:#000000;
+	position: relative;
+	border-radius: 20px;
+	padding: 20px;
+	height: 930px;
+	width:900px;
+}
+.desc{
+	background: #FFFFFF;
+	border-radius: 20px;
+	height: 890px;
+}
+.pic:hover{
+	opacity: 0.5;
+}
+.abt{
+	background: #FFFFFF;
+	border-radius: 20px;
+	height: 620px;
+}
+.abt-us{
+	background:#65B6B4;
+	color:#000000;
+	position: relative;
+	border-radius: 20px;
+	padding: 20px;
+	height: 665px;
+	width:900px;
+}
