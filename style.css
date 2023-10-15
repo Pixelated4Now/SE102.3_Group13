@@ -77,51 +77,53 @@ footer {
 
 /*CSS for the About Us page*/
 .tcard{
- 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    width: 20%;
+ 	box-shadow: 0vh 0.5vw 1.11vh 0vw rgba(0,0,0,0.2);
+        width: 20%;
 }
 .team{
-    padding:10px;
+        padding:8%;
 	transition: transform 0.5s ease;
 }
 .team:hover{
-  	-ms-transform: scale(1.1); /* IE 9 */
- 	 -webkit-transform: scale(1.1); /* Safari 3-8 */
- 	 transform: scale(1.1); 
+	-ms-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	 transform: scale(1.1); 
 }
 td{
 	text-align: center;
 }
 .members{
-	background:#65B6B4;
+	background:#C3EFEA;
 	color:#000000;
-	position: relative;
-	border-radius: 20px;
-	padding: 20px;
-	height: 700px;
-	width:900px;
+	position:relative;
+	border-radius:10px;
+	padding: 2%;
+	height: 100%;
+	width:100%;
 }
 .mem{
-	background: #FFFFFF;
-	border-radius: 20px;
-	height: 650px;
+	background:#C3EFEA;
+	border-radius: 10px;
+	height: 100%;
+	width:100%;
 }
 .nsbm{
-	padding: 20px;
+	padding: 2%;
+	text-align:justify;
 }
 .uni{
 	background:#65B6B4;
 	color:#000000;
 	position: relative;
-	border-radius: 20px;
-	padding: 20px;
-	height: 930px;
-	width:900px;
+	border-radius: 10px;
+	padding: 2%;
+	height: 100%;
+	width:100%;
 }
 .desc{
 	background: #FFFFFF;
-	border-radius: 20px;
-	height: 890px;
+	border-radius: 10px;
+	height: 100%;
 }
 .pic {
 	transition: opacity 0.5s ease;
@@ -131,47 +133,47 @@ td{
 }
 .abt{
 	background: #FFFFFF;
-	border-radius: 20px;
-	height: 620px;
+	border-radius: 10px;
+	height: 100%;
 }
 .abt-us{
 	background:#65B6B4;
 	color:#000000;
 	position: relative;
-	border-radius: 20px;
-	padding: 20px;
-	height: 665px;
-	width:900px;
+	border-radius: 10px;
+	padding: 2%;
+	height: 100%;
+	width:100%;
 }
 
 
 
 /*CSS for the Contact Us page*/
 .cUs{
-	position: relative;
-    text-align:center;
-    color:white;
+	 position:relative;
+         text-align:center;
+         color:white;
 }
 .centered {
-    position: absolute;
-	top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size:90px;
+         position: absolute;
+ 	 top: 50%;
+ 	 left: 50%;
+ 	 transform: translate(-50%, -50%);
+  	 font-size:12vh;
 }
 .contact{
 	background:#65B6B4;
 	color:#000000;
 	position: relative;
-	border-radius: 20px;
-	padding: 20px;
-	height:920px;
-	width:800px;
+	border-radius: 3vh;
+	padding: 3vh 4vw;
+	height:100%;
+	width:80%;
 }
 .contact .input{
 	border-radius:20px;
-	padding: 10px 20px 10px 25px;
-	border: 1px solid #fff;
+	padding:1.3vh 4vw 1.3vh 2.5vw;
+	border: 0 solid #fff;
 	resize: none;
 }
 .contact input:focus {
@@ -181,23 +183,21 @@ td{
         background-color: #D0E7D2;
 }
 .contact .button:active {
-	  background-color: #65B6B4;
-	  box-shadow: 0 5px #666;
-	  transform: translateY(3px);
+	background-color: #65B6B4;
+	box-shadow: 0vw 0.6vh #666;
+        transform: translateY(0.4vh);
 }
 .contact input[type=submit]:hover {
- 	 background-color: #A2CDCD;
+ 	background-color: #A2CDCD;
 }
 .contact input[type=reset]:hover {
-	  background-color: #A2CDCD;
+	background-color: #A2CDCD;
 }
 .contact #submit{
-	width:450px;
-	height:40px;
-	box-shadow: 4px 4px;
+	width:65%;
+	box-shadow: 1vh 0.5vw;
 }
 .contact #reset{
-	width:450px;
-	height:40px;
-	box-shadow: 4px 4px;
+	width:65%;
+	box-shadow: 1vh 0.5vw;
 }
