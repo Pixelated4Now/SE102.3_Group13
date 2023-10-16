@@ -78,10 +78,10 @@ footer {
 /*CSS for the About Us page*/
 .tcard{
  	box-shadow: 0vh 0.5vw 1.11vh 0vw rgba(0,0,0,0.2);
-        width: 20%;
+     width: 20%;
 }
 .team{
-        padding:8%;
+     padding:8%;
 	transition: transform 0.5s ease;
 }
 .team:hover{
@@ -145,15 +145,15 @@ td{
 	height: 100%;
 	width:100%;
 }
+.cUs{
+	 position:relative;
+     text-align:center;
+     color:white;
+}
 
 
 
 /*CSS for the Contact Us page*/
-.cUs{
-	 position:relative;
-         text-align:center;
-         color:white;
-}
 .centered {
          position: absolute;
  	 top: 50%;
@@ -175,6 +175,7 @@ td{
 	padding:1.3vh 4vw 1.3vh 2.5vw;
 	border: 0 solid #fff;
 	resize: none;
+	width: 80%; 
 }
 .contact input:focus {
 	background-color: #D0E7D2;
