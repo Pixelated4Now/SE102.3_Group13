@@ -206,7 +206,7 @@ td{
 /*CSS styling for the Careers page*/
 .careers {
 	width: 99%;
-	height: 400px;
+	height: 60vh;
 	background: url("images/careers.png");
 	background-size: cover;
 }
