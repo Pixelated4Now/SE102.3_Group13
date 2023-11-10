@@ -202,3 +202,11 @@ td{
 	width:65%;
 	box-shadow: 1vh 0.5vw;
 }
+
+/*CSS styling for the Careers page*/
+.careers {
+	width: 99%;
+	height: 400px;
+	background: url("images/careers.png");
+	background-size: cover;
+}
