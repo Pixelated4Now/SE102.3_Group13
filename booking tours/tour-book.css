@@ -1,0 +1,125 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.content {
+  width: 100%; /* Adjust as needed */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.3); /* Add a semi-transparent white background for better text readability */
+}
+	  h2
+{
+	text-align: center;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+}
+p
+{
+	text-align: justify;
+}
+h3
+{
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+}
+hr
+{
+	  width: 100%;
+	  height: 5px; /* Adjust this value to change the line's thickness */
+	  background-color: antiquewhite; /* Change this to your desired line color */
+	  margin: 0;
+	  padding: 0;
+	  border:groove;
+}
+
+.image-container {
+  display: flex;
+  flex-direction:column;
+}
+
+._row {
+  display: flex;
+  margin: 0; /* Remove margin to eliminate space between rows */
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0; /* Remove any default spacing around images */
+	border: 2px solid #007bff;
+}
+.facilities
+{
+	margin-bottom: 1px;
+}
+
+.included ul {
+	list-style-type: none;
+  	list-style-image:url("../images/tpt_check.png");
+  	margin: 0; /* Remove any default margin */
+	list-style-position: inside;
+}
+		  
+.included ul li {
+	padding-left: 20px; /* Adjust the padding to control the spacing between the image and text */
+}
+		  
+.included ul li::marker {
+    width: 16px; /* Set the width of the list marker image */
+    height: 16px; /* Set the height of the list marker image */
+	color: #0F0;
+ } 
+.tpt_row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 5px; 
+  }
+.tpt_row img {
+    width: calc(33.33% - 10px); /* Adjust the width as needed */
+    margin: 5px; /* Add a margin around each image */
+  }
+
+.container{
+		  color: antiquewhite
+}
+	    
+	  #booking-form{
+		  	width: 100%;
+			max-width:100%;  /* Set a maximum width for the table */
+			margin: auto; /* Center the table within its container */
+			border-collapse: collapse; /* Collapse borders between cells */
+
+			/* Add padding and rounded corners to the cells */
+			border: 1px solid #ddd;
+			border-radius: 8px;
+	  }
+	  #booking-form td{
+		  padding: 10px;
+	  }
+	  
+	  #booking-form input[type="text"],
+	  #booking-form input[type = "number"],
+	  #booking-form input[type = "email"],
+	  #booking-form input[type = "tel"],
+	#booking-form textarea,
+	  #booking-form select{
+		width: calc(100% - 10px); /* Adjust the width of text input boxes */
+		padding: 8px; /* Add padding to text input boxes */
+		margin-bottom: 10px; /* Add space between text input boxes */
+		border: 1px solid #CCC; /* Add a border to text input boxes */
+		border-radius: 4px; /* Add rounded corners to text input boxes */
+	  }
+	  
+	  /* Responsive Styles */
+		@media screen and (max-width: 100%) {
+			/* Adjust styles for screens with a maximum width of 100% */
+			#booking-form input[type="text"],
+			#booking-form input[type = "number"],
+			#booking-form input[type = "email"],
+			#booking-form input[type = "tel"],
+			#booking-form textarea,
+			#booking-form select {
+			width: 100%; /* Make input boxes and dropdown list width 100% */
+			margin-bottom: 10px; /* Add space between input boxes and dropdown list */
+    }
