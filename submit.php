@@ -1,3 +1,19 @@
+?php
+    session_start();
+    if (isset($_SESSION['user_id'])) {
+      $db = "id21565937_ceylon_odyssey";
+      $server = "localhost";
+      $username = "root";
+      $pwd ="";
+    
+      $conn = new mysqli($server, $username, $pwd, $db);
+    
+        $sql = "SELECT * FROM user
+                WHERE uid = {$_SESSION['user_id']}";
+        $result = $conn->query($sql);
+        $user = $result->fetch_assoc();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +23,7 @@
 	<meta name="Keywords" content="Website, Tour packages, NSBM, SE102.3, Sri Lanka, Travel, Holiday, Explore, Tour">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-    Ceylon Odyssey</title>
+    Ceylon Odyssey | Thank you</title>
 	 <link rel="shortcut icon" href="images/Logo.png">
 	 <link rel="preconnect" href="https://fonts.googleapis.com">
 	 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,21 +38,34 @@
   <body style="padding-top: 70px">
   <div class="container-fluid">
     <div class="container">
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light container-fluid"> <a class="navbar-brand" href="index.html"><img src="images/Logo.png" width="100" alt="Logo of Ceylon Odyssey"/>&nbsp;</a>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light container-fluid"> <a class="navbar-brand" href="index.php"><img src="images/Logo.png" width="100" alt="Logo of Ceylon Odyssey"/>&nbsp;</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent1">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"> <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Tour Packages</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="aboutUs.html">About us</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Customer Reviews</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="contactUs.html">Contact us</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Careers</a></li>
+            <li class="nav-item active"> <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"> <a class="nav-link"  href="Tour Packages_main.php">Tour Packages</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="aboutUs.php">About us</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="bookingForm.php">Book Now</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="customer_reviews.php">Customer Reviews</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="contactUs.php">Contact us</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="careers.php">Careers</a></li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" style="font-family: 'Ysabeau SC', sans-serif; width: 270px;" aria-label="Search">&nbsp;
-            <button class="btn btn-outline-dark my-2 my-sm-0" style="font-family: 'Ysabeau SC', sans-serif;" type="submit">Search</button>
-          </form>
+          
+          <?php
+            if (isset($_SESSION['user_id'])) {
+                $n = htmlspecialchars($user['uname']);
+                echo "Hello $n!&emsp;";
+                echo "<a href='logOut.php'>";
+            } else {
+                echo '<a href="signIn.php">';
+            }
+        ?>
+         <button class="btn btn-outline-dark my-2 my-sm-0" style="font-family: 'Ysabeau SC', sans-serif;" type="submit">
+          <?php
+            if (isset($_SESSION['user_id'])) {
+                echo "Log out";
+            } else { echo "Sign in"; }
+        ?></button></a>
         </div>
       </nav>
 
@@ -45,7 +74,7 @@
 <br/><br/><br/><br/>
 <center>
   <div><br>
-	  <img src="images/ty_1.png" alt="tick" height="100px" width="100px">
+	  <img src="images/ty_1.png" alt="Thank you!" height="100px" width="100px">
 	</div>
 	<div><br>
 			<h1>Thank You!</h1><br>
@@ -64,11 +93,12 @@
 		  <h4>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;MENU</h4>
 		  <br/>
 		  <ul type="none">
-		      <li><a class="footer-link" href="">TOUR PACKAGES</a></li>
-			  <li><a class="footer-link" href="aboutUs.html">ABOUT US</a></li>
-			  <li><a class="footer-link" href="">CUSTOMER REVIEWS</a></li>
-			  <li><a class="footer-link" href="contactUs.html">CONTACT US</a></li>
-			  <li><a class="footer-link" href="">CAREERS</a></li>
+		      <li><a class="footer-link" href="Tour Packages_main.php">TOUR PACKAGES</a></li>
+			  <li><a class="footer-link" href="aboutUs.php">ABOUT US</a></li>
+			  <li><a class="footer-link" href="bookingForm.php">BOOK NOW</a></li>
+			  <li><a class="footer-link" href="customer_reviews.php">CUSTOMER REVIEWS</a></li>
+			  <li><a class="footer-link" href="contactUs.php">CONTACT US</a></li>
+			  <li><a class="footer-link" href="careers.php">CAREERS</a></li>
 		  </ul>
 	  </div>
 	  <div class="col-md-4">
