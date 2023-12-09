@@ -1,3 +1,18 @@
+<?php
+    session_start();
+    if (isset($_SESSION['user_id'])) {
+        $db = "id21565937_ceylon_odyssey";
+        $server = "localhost";
+        $username = "root";
+        $pwd ="";
+    
+        $conn = new mysqli($server, $username, $pwd, $db);
+        $sql = "SELECT * FROM user
+                WHERE uid = {$_SESSION['user_id']}";
+        $result = $conn->query($sql);
+        $user = $result->fetch_assoc();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +22,7 @@
 	<meta name="Keywords" content="Website, Tour packages, NSBM, SE102.3, Sri Lanka, Travel, Holiday, Explore, Tour">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-    Ceylon Odyssey</title>
+    Ceylon Odyssey | Contact Us</title>
 	 <link rel="shortcut icon" href="images/Logo.png">
 	 <link rel="preconnect" href="https://fonts.googleapis.com">
 	 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,21 +37,34 @@
   <body style="padding-top: 70px">
   <div class="container-fluid">
     <div class="container">
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light container-fluid"> <a class="navbar-brand" href="index.html"><img src="images/Logo.png" width="100" alt="Logo of Ceylon Odyssey"/>&nbsp;</a>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light container-fluid"> <a class="navbar-brand" href="index.php"><img src="images/Logo.png" width="100" alt="Logo of Ceylon Odyssey"/>&nbsp;</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent1">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"> <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Tour Packages</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="aboutUs.html">About us</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Customer Reviews</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="contactUs.html">Contact us</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Careers</a></li>
+            <li class="nav-item active"> <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"> <a class="nav-link"  href="Tour Packages_main.php">Tour Packages</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="aboutUs.php">About us</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="bookingForm.php">Book Now</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="customer_reviews.php">Customer Reviews</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="contactUs.php">Contact us</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="careers.php">Careers</a></li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" style="font-family: 'Ysabeau SC', sans-serif; width: 270px;" aria-label="Search">&nbsp;
-            <button class="btn btn-outline-dark my-2 my-sm-0" style="font-family: 'Ysabeau SC', sans-serif;" type="submit">Search</button>
-          </form>
+          
+          <?php
+            if (isset($_SESSION['user_id'])) {
+                $n = htmlspecialchars($user['uname']);
+                echo "Hello $n!&emsp;";
+                echo "<a href='logOut.php'>";
+            } else {
+                echo '<a href="signIn.php">';
+            }
+        ?>
+         <button class="btn btn-outline-dark my-2 my-sm-0" style="font-family: 'Ysabeau SC', sans-serif;" type="submit">
+          <?php
+            if (isset($_SESSION['user_id'])) {
+                echo "Log out";
+            } else { echo "Sign in"; }
+        ?></button></a>
         </div>
       </nav>
       
@@ -48,15 +76,15 @@
 
 <center>
   <div class="contact">
-    <form action="submit.html" method="POST">
+    <form action="contact.php" method="POST" onsubmit="return validateForm();">
       <table border="0">
 	      <tr><td><h4 align="center"><font color="#FFFFFF"><br>Any questions? Feel free to contact us!</font><br><br><br></h4></td></tr>
       	<tr><td><input type="text" class="input" name="fname" placeholder="First Name" required><br><br></td></tr>
         <tr><td><input type="text" class="input" name="lname" placeholder="Last Name" required><br><br></td></tr>
       	<tr><td><input type="text" class="input" name="email" placeholder="E-mail"  required><br><br></td></tr>
         <tr><td><input type="tel" class="input" name="tel" placeholder="Mobile" maxlength="20" required><br><br></td></tr>
-        <tr><td><input type="text" class="input" name="destination" placeholder="Destination" required><br><br></td></tr>
-        <tr><td><textarea class="input" name="subject" placeholder="Write something..."  rows="6" style="border-radius:25px"></textarea><br><br></td></tr>
+        <tr><td><input type="text" autocomplete="off" class="input" name="subject" placeholder="Subject" required><br><br></td></tr>
+        <tr><td><textarea class="input" name="msg" placeholder="Write something..."  rows="6" style="border-radius:25px"></textarea><br><br></td></tr>
         <tr><td><br><br></td></tr>
 	      <tr><td><input type="submit" id="submit" class="input button" name="submit" value=" Submit "><br><br></td></tr>
       	<tr><td><input type="reset" id="reset" class="input button" name="clear" value=" Clear "></td></tr>
@@ -74,11 +102,12 @@
 		  <h4>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;MENU</h4>
 		  <br/>
 		  <ul type="none">
-		      <li><a class="footer-link" href="">TOUR PACKAGES</a></li>
-			  <li><a class="footer-link" href="aboutUs.html">ABOUT US</a></li>
-			  <li><a class="footer-link" href="">CUSTOMER REVIEWS</a></li>
-			  <li><a class="footer-link" href="contactUs.html">CONTACT US</a></li>
-			  <li><a class="footer-link" href="">CAREERS</a></li>
+		      <li><a class="footer-link" href="Tour Packages_main.php">TOUR PACKAGES</a></li>
+			  <li><a class="footer-link" href="aboutUs.php">ABOUT US</a></li>
+			  <li><a class="footer-link" href="bookingForm.php">BOOK NOW</a></li>
+			  <li><a class="footer-link" href="customer_reviews.php">CUSTOMER REVIEWS</a></li>
+			  <li><a class="footer-link" href="contactUs.php">CONTACT US</a></li>
+			  <li><a class="footer-link" href="careers.php">CAREERS</a></li>
 		  </ul>
 	  </div>
 	  <div class="col-md-4">
@@ -118,7 +147,9 @@
 
     </footer>
 
-    <script>
+  <!-- body code goes here -->
+      
+      <script>
     	function validateForm() {
     		var fname = document.getElementsByName('fname')[0].value;
     		var lname = document.getElementsByName('lname')[0].value;
@@ -155,8 +186,6 @@
     		return true;
     	}
     </script>
-
-  <!-- body code goes here -->
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
