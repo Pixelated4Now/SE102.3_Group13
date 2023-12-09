@@ -1,3 +1,18 @@
+<?php
+    session_start();
+    if (isset($_SESSION['user_id'])) {
+      $db = "id21565937_ceylon_odyssey";
+      $server = "localhost";
+      $username = "root";
+      $pwd ="";
+  
+      $conn = new mysqli($server, $username, $pwd, $db);
+        $sql = "SELECT * FROM user
+                WHERE uid = {$_SESSION['user_id']}";
+        $result = $conn->query($sql);
+        $user = $result->fetch_assoc();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,87 +35,95 @@
 	
 	
   <body style="padding-top: 70px">
+      
   <div class="container-fluid">
     <div class="container">
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light container-fluid"> <a class="navbar-brand" href="index.html"><img src="images/Logo.png" width="100" alt="Logo of Ceylon Odyssey"/>&nbsp;</a>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light container-fluid"> <a class="navbar-brand" href="#"><img src="images/Logo.png" width="100" alt="Logo of Ceylon Odyssey"/>&nbsp;</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent1">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"> <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Tour Packages</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="aboutUs.html">About us</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Customer Reviews</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="contactUs.html">Contact us</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Careers</a></li>
+            <li class="nav-item active"> <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"> <a class="nav-link"  href="Tour Packages_main.php">Tour Packages</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="aboutUs.php">About us</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="bookingForm.php">Book Now</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="customer_reviews.php">Customer Reviews</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="contactUs.php">Contact us</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="careers.php">Careers</a></li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" style="font-family: 'Ysabeau SC', sans-serif" aria-label="Search">&nbsp;
-            <button class="btn btn-outline-dark my-2 my-sm-0" style="font-family: 'Ysabeau SC', sans-serif;" type="submit">Search</button>
-          </form>
+          <?php
+            if (isset($_SESSION['user_id'])) {
+                $n = htmlspecialchars($user['uname']);
+                echo "Hello $n!&emsp;";
+                echo "<a href='logOut.php'>";
+            } else {
+                echo '<a href="signIn.php">';
+            }
+        ?>
+         <button class="btn btn-outline-dark my-2 my-sm-0" style="font-family: 'Ysabeau SC', sans-serif;" type="submit">
+          <?php
+            if (isset($_SESSION['user_id'])) {
+                echo "Log out";
+            } else { echo "Sign in"; }
+        ?></button></a>
+          
         </div>
       </nav>
-	  <br/><br/><br/><br/>
-		<div class="video"><iframe src="https://drive.google.com/file/d/1c3bhVoiXDNhv9nKtHFUKUFXddOq36WdO/preview" width="711" height="400" allow="autoplay">Sorry</iframe></div>
+	  <br/><br/><br/>
+	  <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel" style="background-color: black">
+		  <ol class="carousel-indicators">
+		    <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+		    <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+		    <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+	    </ol>
+		  <div class="carousel-inner" role="listbox">
+		    <div class="carousel-item active"> <img class="d-block mx-auto img-fluid" src="images/index_1.png" alt="First slide">
+		      <div class="carousel-caption">
+	          </div>
+	        </div>
+		    <div class="carousel-item"> <img class="d-block mx-auto img-fluid" src="images/index_2.png" alt="Second slide">
+		      <div class="carousel-caption">
+	        </div></div>
+		    <div class="carousel-item"> <img class="d-block mx-auto img-fluid" src="images/index_3.png" height="403" alt="Third slide">
+		      <div class="carousel-caption">
+	          </div>
+	        </div>
+	    
+		  <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div></div>
+		  
 <p align="center">Holidays are all about stepping out into the amazing world around, creating lifelong experiences and indelible memories! This holiday season, choose from a selection of pre-planned tours all around Sri Lanka offered by C<span style="font-variant: small-caps">eylon</span> O<span style="font-variant: small-caps">dyssey</span>.</p>
 <h2>Popular Destinations</h2>
 		<p>Make the most of your holidays by visiting Sri Lanka's most famous tourist destinations! Turn it into an event you'll never forget.</p>
 <div class="row" style="margin-top: 10px">
-  <div class="col-md-4"><a href="#"><img src="images/index_Dambulla.jpg" alt="Dambulla" class="img-fluid rounded zoom"/></a></div>
-  <div class="col-md-4"><a href="#"><img src="images/index_Galle.jpg" alt="Galle" class="img-fluid rounded zoom"/></a></div>
-  <div class="col-md-4"><a href="#"><img src="images/index_Hikkaduwa.jpg" alt="Hikkaduwa" class="img-fluid rounded zoom"/></a></div>
+  <div class="col-md-4"><a href="booking tours/tpt_Dambulla_2.php"><img src="images/index_Dambulla.jpg" alt="Dambulla" class="img-fluid rounded zoom"/></a></div>
+  <div class="col-md-4"><a href="booking tours/tpt_Galle_2.php"><img src="images/index_Galle.jpg" alt="Galle" class="img-fluid rounded zoom"/></a></div>
+  <div class="col-md-4"><a href="booking tours/tpt_Hikkaduwa_2.php"><img src="images/index_Hikkaduwa.jpg" alt="Hikkaduwa" class="img-fluid rounded zoom"/></a></div>
 </div> <br/>
 <div class="row">
-  <div class="col-md-4"><a href="#"><img src="images/index_Jaffna.jpg" alt="Jaffna" class="img-fluid rounded zoom"/></a></div>
-  <div class="col-md-4"><a href="#"><img src="images/index_Kandy.jpg" alt="Kandy" class="img-fluid rounded zoom"/></a></div>
-  <div class="col-md-4"><a href="#"><img src="images/index_Yala.jpg" alt="Yala" class="img-fluid rounded zoom"/></a></div>
+  <div class="col-md-4"><a href="booking tours/tpt_Jaffna_5.php"><img src="images/index_Jaffna.jpg" alt="Jaffna" class="img-fluid rounded zoom"/></a></div>
+  <div class="col-md-4"><a href="booking tours/tpt_Kandy_3.php"><img src="images/index_Kandy.jpg" alt="Kandy" class="img-fluid rounded zoom"/></a></div>
+  <div class="col-md-4"><a href="booking tours/tpt_Yala_3.php"><img src="images/index_Yala.jpg" alt="Yala" class="img-fluid rounded zoom"/></a></div>
 </div><br/>
 <h2>Explore</h2>
 <p>C<span style="font-variant: small-caps">eylon</span> O<span style="font-variant: small-caps">dyssey</span> offers a number of themed tours. Check out some of our more popular choices below!</p>
 	<div class="row" style="margin-top: 10px">
-	  <div class="col-md-4"><a href="#"><img src="images/index_FamilyTours.jpg" alt="Family Tours" class="img-fluid rounded zoom"/></a></div>
-	  <div class="col-md-4"><a href="#"><img src="images/index_NatureTours.jpg"  alt="Nature Tours" class="img-fluid rounded zoom"/></a></div>
-	  <div class="col-md-4"><a href="#"><img src="images/index_HeritageTours.jpg" alt="Heritage Tours" class="img-fluid rounded zoom"/></a></div>
+	  <div class="col-md-4"><a href="Tour Packages_main.php#special_packages"><img src="images/index_FamilyTours.jpg" alt="Family Tours" class="img-fluid rounded zoom"/></a></div>
+	  <div class="col-md-4"><a href="Tour Packages_main.php#special_packages"><img src="images/index_NatureTours.jpg"  alt="Nature Tours" class="img-fluid rounded zoom"/></a></div>
+	  <div class="col-md-4"><a href="Tour Packages_main.php#special_packages"><img src="images/index_HeritageTours.jpg" alt="Heritage Tours" class="img-fluid rounded zoom"/></a></div>
 </div><br/>
 <div class="row">
-  <div class="col-md-4"><a href="#"><img src="images/index_BeachTours.jpg" alt="Beach Tours" class="img-fluid rounded zoom"/></a></div>
-  <div class="col-md-4"><a href="#"><img src="images/index_WildSafari.jpg" alt="Wild Safari" class="img-fluid rounded zoom"/></a></div>
-  <div class="col-md-4"><a href="#"><img src="images/index_LuxuryTours.jpg" alt="Luxury Tours" class="img-fluid rounded zoom"/></a></div>
+  <div class="col-md-4"><a href="Tour Packages_main.php#special_packages"><img src="images/index_BeachTours.jpg" alt="Beach Tours" class="img-fluid rounded zoom"/></a></div>
+  <div class="col-md-4"><a href="Tour Packages_main.php#special_packages"><img src="images/index_WildSafari.jpg" alt="Wild Safari" class="img-fluid rounded zoom"/></a></div>
+  <div class="col-md-4"><a href="Tour Packages_main.php#special_packages"><img src="images/index_LuxuryTours.jpg" alt="Luxury Tours" class="img-fluid rounded zoom"/></a></div>
 </div><br/><br/>
 		
 	<hr shade/>
 		
 	<div class="contact-form">
 		<h2>Contact us</h2>
-		
-	  <form> 
-	 	<div class="row g-3">
-			  <div class="col-md-4">
-				<label for="inputName4" class="form-label">NAME</label>
-				<input type="text" class="form-control" id="inputname4">
-			  </div>
-			  <div class="col-md-4">
-				<label for="inputEmail4" class="form-label">EMAIL</label>
-				<input type="email" class="form-control" id="inputEmail4">
-			  </div>
-			  <div class="col-md-4">
-				<label for="inputPhone4" class="form-label">PHONE</label>
-				<input type="tel" class="form-control" id="inputPhone4">
-			  </div>
-	    </div>
-	    <div class="row g-3">
-			  <div class="col-12" style="margin-top: 7px; margin-bottom: 10px">
-			    <textarea style="width: 100%" rows="10" placeholder="ENTER YOUR MESSAGE HERE"></textarea>
-			  </div>
-		</div>
-		<div class="row g-3" style="margin-bottom: 10px">
-			 <div class="col-12 d-grid gap-2 d-md-flex justify-content-md-end">
-			  <input class="btn btn-dark" type="submit" name="submit" value="Contact us now!" style="font-family: 'Ysabeau SC', sans-serif"/>
-			</div>
-		</div>	
-	
-</form>
+		<p>We'd love to hear from you! If you have any question, don't hesitate to reach out to us!</p>
+		<a href="contactUs.php"><button class="btn btn-dark" style="font-family: 'Ysabeau SC', sans-serif">Contact us now!</button></a>
 	</div>
-		
+		<br/><br/><br/>
     </div>
 	  
   <footer>
@@ -109,11 +132,12 @@
 		  <h4>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;MENU</h4>
 		  <br/>
 		  <ul type="none">
-		      <li><a class="footer-link" href="">TOUR PACKAGES</a></li>
-			  <li><a class="footer-link" href="aboutUs.html">ABOUT US</a></li>
-			  <li><a class="footer-link" href="">CUSTOMER REVIEWS</a></li>
-			  <li><a class="footer-link" href="contactUs.html">CONTACT US</a></li>
-			  <li><a class="footer-link" href="">CAREERS</a></li>
+		      <li><a class="footer-link" href="Tour Packages_main.php">TOUR PACKAGES</a></li>
+			  <li><a class="footer-link" href="aboutUs.php">ABOUT US</a></li>
+			  <li><a class="footer-link" href="bookingForm.php">BOOK NOW</a></li>
+			  <li><a class="footer-link" href="customer_reviews.php">CUSTOMER REVIEWS</a></li>
+			  <li><a class="footer-link" href="contactUs.php">CONTACT US</a></li>
+			  <li><a class="footer-link" href="careers.php">CAREERS</a></li>
 		  </ul>
 	  </div>
 	  <div class="col-md-4">
@@ -154,6 +178,18 @@
 </div>
   
   <!-- body code goes here -->
+      <script>
+            // Use the Fetch API to make an asynchronous request to viewCount.php
+            fetch('viewCount.php')
+                .then(response => response.text())
+                .then(data => {
+                    // Display the result (if needed)
+                    console.log(data);
+    
+                    // You can add more JavaScript code here to manipulate the DOM or perform other actions
+                })
+                .catch(error => console.error('Error:', error));
+        </script>
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
