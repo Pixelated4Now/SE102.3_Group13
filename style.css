@@ -1,9 +1,18 @@
 @charset "utf-8";
 
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html {
+	
+	scroll-behavior: smooth;
+}
 body {
-	font-family: 'Ysabeau', sans-serif;
 	overflow-x: hidden;
 }
+
 .container-fluid .navbar.fixed-top.navbar-expand-lg.navbar-light.bg-light {
     background-image: -webkit-linear-gradient(135deg,rgba(46,175,125,1.00) 0%,rgba(63,208,201,1.00) 100%);
     background-image: -moz-linear-gradient(135deg,rgba(46,175,125,1.00) 0%,rgba(63,208,201,1.00) 100%);
@@ -73,6 +82,107 @@ footer {
 	transform: scale(1.2);
 }
 
+/*CSS for the Tour Packages page*/
+
+.tp_gallery{
+  display: flex;
+  margin: auto;
+	width: 95%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.tp_button {
+  border-radius: 4px;
+  background-color:#60D2B8;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 97%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.tp_button span{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.tp_button span::after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.tp_button:hover span {
+  padding-right: 25px;
+}
+.tp_button:hover span::after {
+  opacity: 1;
+  right: 0;
+}
+
+figure{
+  width: 300px;
+  margin: 8px 0;
+  border: 1px solid #777;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+figure img{
+  width: 100%;
+}
+figure figcaption{
+  text-align: center;
+  padding: 8px 4px;
+}
+
+figure a, figure a:hover, figure a:focus, figure a:active, figure a:visited {
+	text-decoration: none;
+color: #FFF;
+}
+.tp_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+}
+p1 {
+  font-size: 30px;
+	color:#60D2b8;	
+}
+
+.tp_container {
+  position: relative;
+  max-width: 300px;
+}
+
+.overlay {
+  position: absolute; 
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); 
+  border-radius: 8px;
+  color: #f1f1f1; 
+  width: 100%;
+  transition: .2s ease;
+  opacity:0;
+  color: white;
+  font-size: 15px;
+  padding: 10px;
+  text-align: center;
+}
+
+.tp_container:hover .overlay {
+  opacity: 1;
+}
 
 
 /*CSS for the About Us page*/
@@ -152,7 +262,6 @@ td{
 }
 
 
-
 /*CSS for the Contact Us page*/
 .centered {
          position: absolute;
@@ -201,12 +310,4 @@ td{
 .contact #reset{
 	width:65%;
 	box-shadow: 1vh 0.5vw;
-}
-
-/*CSS styling for the Careers page*/
-.careers {
-	width: 99%;
-	height: 60vh;
-	background: url("images/careers.png");
-	background-size: cover;
 }
