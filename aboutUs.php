@@ -1,3 +1,18 @@
+<?php
+    session_start();
+    if (isset($_SESSION['user_id'])) {
+        $db = "id21565937_ceylon_odyssey";
+        $server = "localhost";
+        $username = "root";
+        $pwd ="";
+    
+        $conn = new mysqli($server, $username, $pwd, $db);
+        $sql = "SELECT * FROM user
+                WHERE uid = {$_SESSION['user_id']}";
+        $result = $conn->query($sql);
+        $user = $result->fetch_assoc();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +22,7 @@
 	<meta name="Keywords" content="Website, Tour packages, NSBM, SE102.3, Sri Lanka, Travel, Holiday, Explore, Tour">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-    Ceylon Odyssey</title>
+    Ceylon Odyssey | About Us</title>
 	 <link rel="shortcut icon" href="images/Logo.png">
 	 <link rel="preconnect" href="https://fonts.googleapis.com">
 	 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,21 +37,34 @@
   <body style="padding-top: 70px">
   <div class="container-fluid">
     <div class="container">
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light container-fluid"> <a class="navbar-brand" href="index.html"><img src="images/Logo.png" width="100" alt="Logo of Ceylon Odyssey"/>&nbsp;</a>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light container-fluid"> <a class="navbar-brand" href="index.php"><img src="images/Logo.png" width="100" alt="Logo of Ceylon Odyssey"/>&nbsp;</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent1">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"> <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Tour Packages</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="aboutUs.html">About us</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Customer Reviews</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="contactUs.html">Contact us</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Careers</a></li>
+            <li class="nav-item active"> <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"> <a class="nav-link"  href="Tour Packages_main.php">Tour Packages</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="aboutUs.php">About us</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="bookingForm.php">Book Now</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="customer_reviews.php">Customer Reviews</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="contactUs.php">Contact us</a></li>
+            <li class="nav-item"> <a class="nav-link"  href="careers.php">Careers</a></li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" style="font-family: 'Ysabeau SC', sans-serif; width: 270px;" aria-label="Search">&nbsp;
-            <button class="btn btn-outline-dark my-2 my-sm-0" style="font-family: 'Ysabeau SC', sans-serif;" type="submit">Search</button>
-          </form>
+          <?php
+            if (isset($_SESSION['user_id'])) {
+                $n = htmlspecialchars($user['uname']);
+                echo "Hello $n!&emsp;";
+                echo "<a href='logOut.php'>";
+            } else {
+                echo '<a href="signIn.php">';
+            }
+        ?>
+         <button class="btn btn-outline-dark my-2 my-sm-0" style="font-family: 'Ysabeau SC', sans-serif;" type="submit">
+          <?php
+            if (isset($_SESSION['user_id'])) {
+                echo "Log out";
+            } else { echo "Sign in"; }
+        ?></button></a>
+
         </div>
       </nav>
 	 
@@ -49,17 +77,17 @@
 
 	<div class="mem  table-responsive">
 		<table border="0" class="mem">
-			<tr><td colspan="5"><h4><br>Team Members<br><br></h4></td></tr>
+			<tr><td colspan="5"><h4><br>Team Members of Group 13<br><br></h4></td></tr>
 			<tr><td><img src="images/au_2.png" height="150vh" width="150vw" alt="member1" class="team img-fluid"><br>Senindie<br>Samarasinghe</td>
-				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member2" class="team img-fluid"><br>Nilasi<br>Pevinya</td>
-				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member3" class="team img-fluid"><br>Hiruna<br>Kularatne</td>
 				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member4" class="team img-fluid"><br>Dewmini<br>Ariyarathne</td>
+				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member2" class="team img-fluid"><br>Eshini<br>Anupabha</td>
+				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member3" class="team img-fluid"><br>Gayathmee<br>Kiweka</td>
 				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member5" class="team img-fluid"><br>Minidu<br>Abeywickrama</td></tr>
-			<tr><td><img src="images/au_2.png" height="150vh" width="150vw" alt="member6" class="team img-fluid"><br>Sehansi<br>Dinuradee</td>
+			<tr><td><img src="images/au_2.png" height="150vh" width="150vw" alt="member6" class="team img-fluid"><br>Nilasi<br>Pevinya</td>
 				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member7" class="team img-fluid"><br>Dinithi<br>Ekanayake</td>
-				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member8" class="team img-fluid"><br>Gayathmee<br>Kiweka</td>
-				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member9" class="team img-fluid"><br>Nelushi<br>De Silva</td>
-				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member10" class="team img-fluid"><br>Eshini<br>Anupabha</td></tr>
+				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member8" class="team img-fluid"><br>Nelushi<br>De Silva</td>
+				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member9" class="team img-fluid"><br>Sehansi<br>Dinuradee</td>
+				<td><img src="images/au_2.png" height="150vh" width="150vw" alt="member10" class="team img-fluid"><br>Hiruna<br>Kularatne</td></tr>
 			<tr><td>                                         <br><br> </td></tr>
 		</table>
 	</div>
@@ -91,11 +119,12 @@
 		  <h4>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;MENU</h4>
 		  <br/>
 		  <ul type="none">
-		      <li><a class="footer-link" href="">TOUR PACKAGES</a></li>
-			  <li><a class="footer-link" href="aboutUs.html">ABOUT US</a></li>
-			  <li><a class="footer-link" href="">CUSTOMER REVIEWS</a></li>
-			  <li><a class="footer-link" href="contactUs.html">CONTACT US</a></li>
-			  <li><a class="footer-link" href="">CAREERS</a></li>
+		      <li><a class="footer-link" href="Tour Packages_main.php">TOUR PACKAGES</a></li>
+			  <li><a class="footer-link" href="aboutUs.php">ABOUT US</a></li>
+			  <li><a class="footer-link" href="bookingForm.php">BOOK NOW</a></li>
+			  <li><a class="footer-link" href="customer_reviews.php">CUSTOMER REVIEWS</a></li>
+			  <li><a class="footer-link" href="contactUs.php">CONTACT US</a></li>
+			  <li><a class="footer-link" href="careers.php">CAREERS</a></li>
 		  </ul>
 	  </div>
 	  <div class="col-md-4">
