@@ -298,22 +298,7 @@
   
   <!-- body code goes here -->
 	<script language="javascript" type="text/javascript">
-		
-		function filterPackagesviaURL(){
-			const params = new URLSearchParams(window.location.search);
-			if (params.has('title')) {
-				let destination = params.get('title'); // Retrieve the value of the URL parameter, title.
-				let packages = document.querySelectorAll('.tp_gallery figure');
-				let selectBox = document.querySelector('#select-box');
-				selectBox.value = destination;
-				
-				
-				 
-			}
-		}
-		
-		
-		
+
 			let selectBox = document.querySelector('#select-box');
 			let packages = document.querySelectorAll('.tp_gallery figure');
 		
